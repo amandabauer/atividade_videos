@@ -51,8 +51,25 @@
         </table>
       <!--  <script src="app/index.js>"></script>  -->
       <script src="app/domain/negociacao/Negociacao.js>"></script> 
-
+      <script src="app/Controllers/NegociacaoController.js>"></script>
+      <script src="app/app.js>"></script>  
       <script>
+        let Outrodia = new Date();
+        outroDia.setDate(22);
+
+        let n1 = new Negociacao(outroDia, 10, 3.0);
+
+        outroDia.setDate(30);
+
+        let volume = n1.volume;
+
+        n1.quantidade = 30;
+        console.log(n1.quantidade);
+
+        n1.data.setDate(15);
+
+        n1._quantidade = 50;
+        console.log(n1._quantidade);
         
       </script>
     </body>
