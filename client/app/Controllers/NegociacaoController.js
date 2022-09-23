@@ -1,22 +1,36 @@
 class NegociacaoController{
 
-constructor(){
+    constructor(){
 
-    let $ = document.querySelector.bind(document);
-    
-   this._inputData = $("#data")
-   this._inputQuantidade = $("#quantidade")
-   this._inputValor = $("#valor")
+        let $ = document.querySelector.bind(document);
+            
+        this._inputData = $("#data")
+        this._inputQuantidade = $("#quantidade")
+        this._inputValor = $("#valor")
+        this._negociacoes = new Negociacoes();
+        this._negociacoesView = new NegociacoesView('#negociacoes');
+        this._negociacoesView.update(this._negociacoes);
+    }
 
-}
-adiciona(event) {
+    adiciona(event) {
+        event.preventDefault();
+        this._negociacoes.adiciona(this._criaNegociacao);
+        this._negociacoesView.update(this._negociacoes);
+        this._limparFormulario();
+    }
 
-    event.preventDefault();
-    let data = new Date(...this._inputData.value.split("-").map((item, indice) => item - (indice % 2)));
-    let negociacao = new Negociacao(data, this._inputQuantidade.value, this._inputValor.value)
+    _limparFormulario(){
+        this._inputData = "2021-01-01";
+        this._inputQuantidade.value = 1;
+        this._inputValor.value = 2.0;
+        this._inputData.focus();
+    }
 
-    console.log(this._inputData);
-    console.log(parseInt(this._inputquantidade));
-    console.log(parseFloat(this._inputvalor));
-}
+    _criaNegociacao(){
+        return new Negociacao(
+            DateConverter.paraData(this._inputData.value),
+            parseInt(this._inputQuantidade.value),
+            parseFloat(this._inputValor,value)
+        );
+    }
 }
