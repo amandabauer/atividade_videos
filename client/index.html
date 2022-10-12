@@ -48,23 +48,14 @@
       <script src="app/ui/view/MensagemView.js"></script>
       <script src="app/ui/views/View.js"></script>
       <script>
-        let Outrodia = new Date();
-        outroDia.setDate(22);
+        const negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
+            get: function(target, prop, receiver){
+            console.log(`a propriedade "${prop}" caiu na armadilha`);
+            },
+        });
 
-        let n1 = new Negociacao(outroDia, 10, 3.0);
-
-        outroDia.setDate(30);
-
-        let volume = n1.volume;
-
-        n1.quantidade = 30;
-        console.log(n1.quantidade);
-
-        n1.data.setDate(15);
-
-        n1._quantidade = 50;
-        console.log(n1._quantidade);
-        
+        console.log(negociacao.quantidade)
+        console.log(negociacao.valor);
       </script>
     </body>
 </html>
