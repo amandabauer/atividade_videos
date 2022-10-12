@@ -51,11 +51,20 @@
         const negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
             get: function(target, prop, receiver){
             console.log(`a propriedade "${prop}" caiu na armadilha`);
-            },
+           return target [prop];
+         },
+
+         set (target, prop, value, receiver){
+            console.log(`${prop} guarda ${target[prop]}, recebera ${value}`);
+            target[prop] = value;
+            return taget[prop] == value;
+        },
         });
 
         console.log(negociacao.quantidade)
         console.log(negociacao.valor);
+        negociacao._quantidade = 10;
+        negociacao._valor = 200;
       </script>
     </body>
 </html>
