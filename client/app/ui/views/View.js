@@ -1,12 +1,13 @@
 class View {
-    constrcutor(selector){
-        this._elemento = documento.querySelector(selector);
+    constructor(seletor){
+        this._elemento = document.querySelector(seletor)
     }
+
     update(model){
-        this._elementor.innerHTML = this.template(model);
+        this._elemento.innerHTML = this.template(model);
     }
 
     template(model){
-        throw new Error('Voce precisa implementar o metodo template');
+        throw new Error("Você precisa implementar o método template")
     }
 }

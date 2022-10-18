@@ -1,27 +1,36 @@
-var campos = [document.querySelector('#data'), document.querySelector('#valor'), document.querySelector('quantidade')];
+var campos = [
+    document.querySelector('#data'),
+    document.querySelector('#valor'),
+    document.querySelector('#quantidade')
+]
 
 console.log(campos);
 
 var tbody = document.querySelector('table tbody');
 
-document.querySelector('.form').addEventListener('submit', function (event) {
-     event.preventDefault();
+document.querySelector('.form').addEventListener('submit', function(event){
+    event.preventDefault();
+
     var tr = document.createElement('tr');
 
-    campos.forEach(function (campo) {
+    campos.forEach(function(campo){
         var td = document.createElement('td');
+
         td.textContent = campo.value;
-        tr.appendChild
+
+        tr.appendChild(td);
     });
-     var tdVolume = document.createElement('td')
 
-     tdVolume.textContent = campos[1].value * campos[2].value
-     tr.appendChild(tdVolume);
+    var tdVolume = document.createElement('td');
 
-     tbody.appendChild(tr);
+    tdVolume.textContent = campos[1].value * campos[2].value;
 
-     campos[0].value = '';
-     campos[1].value = 1;
-     campos[2].value = 0;
-     campos[0].focus();
-});
+    tr.appendChild(tdVolume);
+
+    tbody.appendChild(tr);
+
+    campos[0].value = '';
+    campos[1].value = 1;
+    campos[2].value = 0;
+    campos[0].focus();
+})

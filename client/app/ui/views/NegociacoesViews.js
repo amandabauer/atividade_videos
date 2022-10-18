@@ -1,7 +1,8 @@
-class NegociacoesView extends View{
+class NegociacoesViews extends View{ 
+   
     template(model){
-        return `
-     <table class="table table-hover table-bordered">
+        return 
+        `<table class="table table-hover table-bordered">
         <thead>
             <tr>
                 <th>DATA</th>
@@ -12,22 +13,23 @@ class NegociacoesView extends View{
         </thead>
 
         <tbody>
-        ${model.paraArray().map(negociacao => {
-            `<tr>
-                <td>${DataConverter.paraTexto(negociacao.data)}</td>
+        ${model.paraArray().map(negociacao => 
+             `
+            <tr>
+                <td>${DateConverter.paraTexto(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
                 <td>${negociacao.volume}</td>
-            </tr> `;
-        }).join('') }
-    
+            </tr>
+            `    
+        ).join('')}
         </tbody>
 
         <tfoot>
-        <tr>
-        <td colspan="3"></td>
-        <td>${model.volumeTotal}</td>
-        </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td>${model.volumeTotal}</td>
+            </tr>
         </tfoot>
     </table>`
     }
